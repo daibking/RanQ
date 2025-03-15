@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-top: 20px;
+    /* 使用更自然的时间曲线 */
+    animation: scaleAndFadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1); 
+    will-change: transform, opacity;
+}
+
+.command-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.command-card {
+    background-color: #fff;
+    border-radius: 10px;
+    /* 开启硬件加速 */
+    will-change: transform, background-color, box-shadow; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* 为每个卡片设置不同的动画延迟 */
+.command-container .command-card:nth-child(1) {
+    animation: fadeInUp 1s 0.2s ease both;
+}
+
+.command-container .command-card:nth-child(2) {
+    animation: fadeInUp 1s 0.4s ease both;
+}
+
+.command-container .command-card:nth-child(3) {
+    animation: fadeInUp 1s 0.6s ease both;
+}
+
+.command-container .command-card:nth-child(4) {
+    animation: fadeInUp 1s 0.8s ease both;
+}
+
+.command-container .command-card:nth-child(5) {
+    animation: fadeInUp 1s 1s ease both;
+}
+
+.command-card:hover {
+    /* 使用 transform 进行位移和缩放 */
+    transform: translateY(-5px) scale(1.05); 
+    background-color: #f0f0f0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.command-card h2 {
+    margin-top: 0;
+}
+
+pre {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@keyframes scaleAndFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.command-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+    
